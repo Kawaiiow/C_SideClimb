@@ -1,0 +1,7 @@
+# You might fount out this's a weird rule but my workspace was very messy as hell.
+*
+*.out
+
+!.gitignore
+!*.c
+!mini_print/
