@@ -4,4 +4,6 @@
 
 !.gitignore
 !*.c
+!*.h
+!Makefile
 !mini_print/
