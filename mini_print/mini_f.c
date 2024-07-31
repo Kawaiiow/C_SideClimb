@@ -1,62 +1,39 @@
-#include <stdlib.h>
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
-
-static int	ft_putchar(int c)
-{
-	write(STDOUT_FILENO, &c, 1);
-	return (1);
-}
-
-static int	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		ft_putchar(str[i++]);
-	return (i);
-}
+#include "mini_print.h"
 
 int	ft_printfstr(char const *format, ...)
 {
 	va_list	lst_str;
-	char	*str;
 	int		i;
 	int		len;
 
-	i = 0;
+	i = -1;
 	len = 0;
 	va_start(lst_str, format);
-	while (format[i])
+	while (format[++i])
 	{
 		if (format[i] == '%')
 		{
-			str = va_arg(lst_str, char *);
-			len += ft_putstr(str);
+			len += formatter(lst_str, format[i + 1]);
+			i++;
 		}
 		else
 			len += ft_putchar(format[i]);
-		i++;
 	}
 	va_end(lst_str);
 	return (len);
 }
 
 // example to compare to the library. 
-// Well it's only work with string still my be the integer will be after.
+// Well it's only work with string, interger, char and % others format will be in shortly.
 
 int main()
 {
 	// compare with standard printf
 	ft_printfstr("print from my function : hello world\n");
-	printf("print from stdio library function : hello world");
+	printf("print from stdio library function : hello world\n");
 
 	// compare the return behavior which will return the lenght of string it hgas printed
-	printf("\n%d were printed by my function.", ft_printfstr("try % %", "hello", "world"));
-	printf("\n%d were printed by stdio library function.", printf("try %s %s", "hello", "world"));
+	printf("\n%d were printed by my function.\n", ft_printfstr("try %% %s %s %d times", "hello", "world", 2));
+	printf("\n%d were printed by stdio library function.", printf("try %% %s %s %d times", "hello", "world", 2));
 	return 0;
 }
