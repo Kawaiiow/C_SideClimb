@@ -28,3 +28,18 @@ int	ft_putnbr(int num)
 	free(str);
 	return (len);
 }
+
+int	ft_puthex(int num, char flag)
+{
+	char	*str;
+	int		len;
+
+	len = 0;
+	if (flag == 'X')
+		str = ft_itohex(num, UP_HEX);
+	else if (flag == 'x')
+		str = ft_itohex(num, LOW_HEX);
+	len += ft_putstr(str);
+	free(str);
+	return (len);
+}
