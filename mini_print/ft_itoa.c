@@ -22,12 +22,12 @@ char	*ft_itoa(int num)
 	unsigned int	number;
 
 	len = n_len(num);
-	res = (char *)malloc(len * sizeof(int));
+	res = (char *)malloc((len + 1)* sizeof(char));
 	if (!res)
 		return (NULL);
 	res[len--] = '\0';
 	if (num == 0)
-		res[0] = 0;
+		res[0] = '0';
 	if (num < 0)
 	{
 		number = num * -1;
