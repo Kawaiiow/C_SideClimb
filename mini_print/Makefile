@@ -3,7 +3,7 @@ CFLAG = -Wall -Werror -Wextra
 RM = rm -f
 
 SRC = mini_f.c ft_itoa.c flag_reader.c util.c \
-		ft_itohex.c
+		ft_itohex.c ft_pointer.c
 OUTPUT_NAME = a.out
 OBJS = ${SRC:.c=.o}
 

@@ -7,8 +7,10 @@ int	formatter(va_list varg, char flag)
 	len = 0;
 	if (flag == 'd' || flag == 'i')
 		len += ft_putnbr(va_arg(varg, int));
-	if (flag == 'X' || flag == 'x')
+	else if (flag == 'X' || flag == 'x')
 		len += ft_puthex(va_arg(varg, int), flag);
+	else if (flag == 'p')
+		len += ft_putptr(va_arg(varg, uintptr_t));
 	else if (flag == 's')
 		len += ft_putstr(va_arg(varg, char *));
 	else if (flag == 'c')

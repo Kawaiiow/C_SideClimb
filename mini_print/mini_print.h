@@ -3,6 +3,7 @@
 
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdint.h>
 # include <unistd.h>
 # include <stdio.h>
 
@@ -16,6 +17,7 @@ int		ft_putchar(int c);
 int		ft_putstr(char *str);
 int		ft_putnbr(int num);
 int		ft_puthex(int num, char flag);
+int		ft_putptr(uintptr_t ptr);
 
 int		formatter(va_list varg, char flag);
 
